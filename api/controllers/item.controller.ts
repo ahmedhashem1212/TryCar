@@ -69,6 +69,15 @@ exports.update_item = async function (req:Request, res:Response) {
         },
       });
     }
+
+    const itemFound = await Item.findByPk(req.body.id);
+    if(!itemFound){
+      return res.status(404).json({
+        ...statusCodes.ItemCodes.itemNotFound,
+        message:"item not found"
+
+      });
+    }
     const updated_item = await Item.update(
       
       { ...item, updatedAt: new Date() },

@@ -24,7 +24,12 @@ exports.view_users = async (req:Request, res:Response) => {
 };
 exports.view_users_id = async (req:Request, res:Response) => {
   try {
-    const user = await User.findByPk(req.body.id);
+    const user = await User.findByPk(req.body.id,{include: [
+      {
+        model: Invoice,
+        include: [Item],
+      },
+    ],});
     return res.json({
       User: user,
     });

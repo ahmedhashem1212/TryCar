@@ -7,4 +7,6 @@ router.post('/viewId', invoiceController.view_invoice_id);
 router.post('/update', invoiceController.update_invoice);
 router.post('/delete', invoiceController.delete_invoice); 
 router.post('/create', invoiceController.create_invoice);
+router.post('/createDetailed', invoiceController.create_detailed_invoice);
+
 module.exports = router;

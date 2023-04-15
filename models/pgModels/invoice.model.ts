@@ -27,7 +27,7 @@ Invoice.init(
     },
     totalAmount: {
       type: DataTypes.DOUBLE,
-      allowNull:false,
+      allowNull:true,
     },
     user_id: {
       type: DataTypes.INTEGER,

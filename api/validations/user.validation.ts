@@ -26,10 +26,20 @@ const userValidation = (request:Request) => {
 const invoiceValidation = (request:Request) => {
   const validate = 
   Joi.object({
-    status: Joi.string().min(3).required(),
-    totalAmount: Joi.number().required(),
+    status: Joi.string().min(3),
+    totalAmount: Joi.number(),
     name: Joi.string().min(3).required(),
-    user_id :Joi.number().required(),
+    user_id :Joi.number(),
+    });
+  return validate.validate(request);
+};
+const invoiceDetailedValidation = (request:Request) => {
+  const validate = 
+  Joi.object({
+    items:Joi.array(),
+    status: Joi.string().min(3),
+    name: Joi.string().min(3).required(),
+    user_id :Joi.number(),
     });
   return validate.validate(request);
 };
@@ -94,5 +104,6 @@ module.exports = {
   invoiceValidation,
   updateinvoiceValidation,
   itemValidation,
-  updateItemValidation
+  updateItemValidation,
+  invoiceDetailedValidation
 };

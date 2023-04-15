@@ -42,6 +42,6 @@ User.init(
   }
 );
 
-User.hasMany(Invoice,{foreignKey:'user_id'});
+User.hasOne(Invoice,{foreignKey:'user_id'});
 Invoice.belongsTo(User,{foreignKey:'user_id'})
 module.exports = User;
